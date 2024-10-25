@@ -14,8 +14,30 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
+            string entradaVeiculo;
+            bool veiculoCadastrado = false;
+
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            veiculos.Add(Console.ReadLine());
+            entradaVeiculo = Console.ReadLine();
+
+            //foreach faz uma busca se aquele veiculo já foi cadastrado
+            foreach (string listaAddVeiculos in veiculos)
+            {
+                if (entradaVeiculo == listaAddVeiculos)
+                {
+                    veiculoCadastrado = true;
+                    break;
+                }
+            }
+           
+            if(veiculoCadastrado == true)
+            {
+                Console.WriteLine("Esse veículo já foi cadastrado");
+            }
+            else
+            {
+                veiculos.Add(entradaVeiculo);
+            }
         }
 
         public void RemoverVeiculo()
